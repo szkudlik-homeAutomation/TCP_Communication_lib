@@ -1,6 +1,6 @@
 #ifndef TCP_SERVER
 #define TCP_SERVER
-#include "../debug.h"
+#include "../common.h"
 #include <Ethernet.h>
 
 #include <ProcessScheduler.h>
