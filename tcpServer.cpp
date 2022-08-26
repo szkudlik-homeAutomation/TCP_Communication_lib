@@ -8,9 +8,15 @@ bool tTcpSession::Process()
   {
     return false;
   }
+
+  // check timeout
+  if (0 == mCurrentTimeout--)
+  {
+     return false;
+  }
+
   return doProcess();
 }
-
 
 void tTcpSession::SendFlashString(const char * str)
 {

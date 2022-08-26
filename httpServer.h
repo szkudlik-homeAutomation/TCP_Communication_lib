@@ -32,6 +32,7 @@ class tHttpServlet
 class tHttpSession : public tTcpSession
 {
 public:
+  static uint16_t const HTTP_SESSION_TIMEOUT = 1000;
   tHttpSession(EthernetClient aEthernetClient);
   virtual ~tHttpSession() { if (pServlet) delete pServlet; }
 

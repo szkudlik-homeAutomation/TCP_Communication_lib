@@ -18,7 +18,6 @@ public:
 
 protected:
   tTcpServer(uint16_t ServerPort) : server(ServerPort) { pNext = pFirst; pFirst = this; }
-
   EthernetServer server;
 
 private:
@@ -30,9 +29,13 @@ private:
 class tTcpSession
 {
 public:
-  tTcpSession(EthernetClient aEthernetClient)
+   // timeout - number of ticks after the session will be closed.
+   // unless clearTimeout is called.
+  tTcpSession(EthernetClient aEthernetClient, uint16_t timeout)
   {
     mEthernetClient = aEthernetClient;
+    mTimeout = timeout;
+    clearTimeout();
   }
 
   virtual ~tTcpSession()
@@ -53,8 +56,12 @@ protected:
   // if return false - the session should be deleted
   virtual bool doProcess() = 0;
 
+  void clearTimeout() { mCurrentTimeout = mTimeout; }
+
 private:
    static const uint8_t BUFFER_SIZE = 100; // data portion to be sent in one frame, buffer on stack
+   uint16_t mCurrentTimeout;
+   uint16_t mTimeout;
 
 };
 
@@ -62,7 +69,7 @@ class tTcpServerProcess : public Process
 {
 public:
   tTcpServerProcess(Scheduler &manager) :
-    Process(manager,LOW_PRIORITY,10)
+    Process(manager,LOW_PRIORITY,TCP_SERVER_SHEDULER_PERIOD)
     { }
 
 protected:
@@ -70,6 +77,7 @@ protected:
   virtual void service();
 
   static uint8_t const NUM_OF_CONCURRENT_SESSIONS = 6;
+  static uint8_t const TCP_SERVER_SHEDULER_PERIOD = 10;     //ms
   tTcpSession* clients[NUM_OF_CONCURRENT_SESSIONS];
 };
 

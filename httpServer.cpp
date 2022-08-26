@@ -82,7 +82,7 @@ char * tHttpServlet::FindParameter(const char * Param,  char **ppValue, uint8_t 
   return NULL;
 }
 
-tHttpSession::tHttpSession(EthernetClient aEthernetClient) : tTcpSession(aEthernetClient), pServlet(NULL)
+tHttpSession::tHttpSession(EthernetClient aEthernetClient) : tTcpSession(aEthernetClient, HTTP_SESSION_TIMEOUT), pServlet(NULL)
 {
   DEBUG_PRINTLN_3("HTTP Session started");
 }
