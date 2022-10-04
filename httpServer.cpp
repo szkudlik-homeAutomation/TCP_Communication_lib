@@ -1,5 +1,5 @@
 #include "httpServer.h"
-#include "../version.h"
+#include "../../version.h"
 
 
 void tHttpServlet::SendResponse400()
