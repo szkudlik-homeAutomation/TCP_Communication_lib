@@ -1,7 +1,7 @@
 #ifndef NETWORK_H
 #define NETWORK_H
 
-#include "Eeprom.h"
+#include "../../../Eeprom.h"
 #include <SPI.h>
 #include <Ethernet.h>
 
@@ -9,7 +9,7 @@ class tNetwork
 {
 public:
  tNetwork() {}
- 
+
  void init()
  {
     for(uint8_t i= 0; i < 4; i++) mIP[i] = EEPROM.read(EEPROM_IP+i);
@@ -29,19 +29,19 @@ public:
  const IPAddress * GetDNS() const { return &mDNS; }
  const uint8_t * GetMAC() const { return mMAC; }
 
- void SetIp(uint8_t * IP) 
+ void SetIp(uint8_t * IP)
  {
    for(uint8_t i= 0; i < 4; i++) mIP[i] = IP[i];
    Update();
  }
- 
+
  void SetNetmask(uint8_t * Netmask)
  {
    for(uint8_t i= 0; i < 4; i++) mNetmask[i] = Netmask[i];
    Update();
  }
 
- void SetGateway(uint8_t * Gateway) 
+ void SetGateway(uint8_t * Gateway)
  {
    for(uint8_t i= 0; i < 4; i++) mGateway[i] = Gateway[i];
    Update();
@@ -73,7 +73,7 @@ private:
     for(uint8_t i= 0; i < 4; i++) EEPROM.update(EEPROM_IPMASK+i,mNetmask[i]);
     for(uint8_t i= 0; i < 4; i++) EEPROM.update(EEPROM_GATEWAY+i,mGateway[i]);
     for(uint8_t i= 0; i < 4; i++) EEPROM.update(EEPROM_DNS+i,mDNS[i]);
-    for(uint8_t i= 0; i < 6; i++) EEPROM.update(EEPROM_MAC+i,mMAC[i]);    
+    for(uint8_t i= 0; i < 6; i++) EEPROM.update(EEPROM_MAC+i,mMAC[i]);
   }
 };
 
