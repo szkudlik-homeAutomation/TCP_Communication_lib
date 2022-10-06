@@ -2,7 +2,6 @@
 #define NETWORK_H
 
 #include "../../../global.h"
- #include "../../../Eeprom.h"
 #include <SPI.h>
 #include <Ethernet.h>
 

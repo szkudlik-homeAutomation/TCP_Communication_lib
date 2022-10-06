@@ -1,7 +1,6 @@
 #ifndef TCP_SERVER
 #define TCP_SERVER
 #include "../../../global.h"
-#include "../../debug.h"
 
 #include <Ethernet.h>
 
