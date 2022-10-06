@@ -1,5 +1,6 @@
 #ifndef HTTP_SERVER
 #define HTTP_SERVER
+#include "../../../global.h"
 #include "tcpServer.h"
 
 class tHttpSession;

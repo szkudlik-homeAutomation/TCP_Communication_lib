@@ -1,3 +1,4 @@
+#include "../../../global.h"
 #include "tcpServer.h"
 
 tTcpServer* tTcpServer::pFirst = NULL;

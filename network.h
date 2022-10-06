@@ -1,7 +1,8 @@
 #ifndef NETWORK_H
 #define NETWORK_H
 
-#include "../../../Eeprom.h"
+#include "../../../global.h"
+ #include "../../../Eeprom.h"
 #include <SPI.h>
 #include <Ethernet.h>
 
