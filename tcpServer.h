@@ -4,7 +4,7 @@
 
 #include <Ethernet.h>
 
-#include <ProcessScheduler.h>
+#include "../external/ArduinoProcessScheduler/src/ProcessScheduler.h"
 
 class tTcpSession;
 class tTcpServer
