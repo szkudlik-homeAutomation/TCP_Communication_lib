@@ -5,6 +5,7 @@
 #include <Ethernet.h>
 
 #include "../external/ArduinoProcessScheduler/src/ProcessScheduler.h"
+#include "../../Common_code/WatchdogProcess.h"
 
 class tTcpSession;
 class tTcpServer
@@ -63,14 +64,14 @@ private:
    static const uint8_t BUFFER_SIZE = 100; // data portion to be sent in one frame, buffer on stack
    uint16_t mCurrentTimeout;
    uint16_t mTimeout;
-
 };
 
 class tTcpServerProcess : public Process
 {
 public:
-  tTcpServerProcess(Scheduler &manager) :
-    Process(manager,LOW_PRIORITY,TCP_SERVER_SHEDULER_PERIOD)
+  tTcpServerProcess(Scheduler &manager, uint16_t WatchdogTimeout) :
+    Process(manager,LOW_PRIORITY,TCP_SERVER_SHEDULER_PERIOD),
+    mWatchdog(WatchdogTimeout)
     { }
 
 protected:
@@ -80,6 +81,9 @@ protected:
   static uint8_t const NUM_OF_CONCURRENT_SESSIONS = 6;
   static uint8_t const TCP_SERVER_SHEDULER_PERIOD = 10;     //ms
   tTcpSession* clients[NUM_OF_CONCURRENT_SESSIONS];
+
+private:
+  tWatchdogItem mWatchdog;
 };
 
 

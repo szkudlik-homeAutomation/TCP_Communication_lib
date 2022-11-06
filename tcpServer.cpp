@@ -74,6 +74,12 @@ void tTcpServerProcess::service()
       DEBUG_SERIAL.print (F("New connection from "));
       DEBUG_SERIAL.print (newClient.remoteIP());
       #endif
+
+      // reset watchdog.
+      // as Arduino Ethershield likes to hang (HW issue), restart the system if there's no new tcp sessions in last TCP_WATCHDOG_TIMEOUT
+      // that requires an external device to make periodic connections
+      mWatchdog.Reset();
+
       for (uint8_t i = 0; i < NUM_OF_CONCURRENT_SESSIONS; i++)
       {
         if (clients[i] == NULL)
