@@ -3,7 +3,8 @@
 
 #include "../../../global.h"
 #include <SPI.h>
-#include <Ethernet.h>
+
+#include "../external/Ethernet/src/localEthernet.h"
 
 class tNetwork
 {

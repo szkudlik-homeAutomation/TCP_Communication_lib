@@ -2,10 +2,9 @@
 #define TCP_SERVER
 #include "../../../global.h"
 
-#include <Ethernet.h>
-
 #include "../external/ArduinoProcessScheduler/src/ProcessScheduler.h"
 #include "../../Common_code/WatchdogProcess.h"
+#include "../external/Ethernet/src/localEthernet.h"
 
 class tTcpSession;
 class tTcpServer
