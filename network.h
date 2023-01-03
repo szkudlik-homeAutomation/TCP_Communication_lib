@@ -3,7 +3,7 @@
 
 #include "Eeprom.h"
 #include <SPI.h>
-#include <Ethernet.h>
+#include "../lib/Ethernet/src/localEthernet.h"
 
 class tNetwork
 {

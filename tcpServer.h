@@ -1,9 +1,9 @@
 #ifndef TCP_SERVER
 #define TCP_SERVER
 #include "../common.h"
-#include <Ethernet.h>
+#include "../lib/Ethernet/src/localEthernet.h"
 
-#include <ProcessScheduler.h>
+#include "../lib/ArduinoProcessScheduler/src/ProcessScheduler.h"
 
 class tTcpSession;
 class tTcpServer
