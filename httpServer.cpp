@@ -1,5 +1,5 @@
+#include "../../global.h"
 #include "httpServer.h"
-#include "../version.h"
 
 
 void tHttpServlet::SendResponse400()
